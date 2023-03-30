@@ -1,0 +1,24 @@
+---
+- name: Deploy simple webserver
+  hosts: web
+  become: true
+  
+  tasks:
+  - name: Install apache webserver package
+    ansible.builtin.package:
+      name: httpd
+      state: present
+
+  - name: Copy in an index.html file
+    ansible.builtin.copy:
+      content: YAY Ansible
+      dest: /var/www/html/index.html
+
+  - name: Start and enable apache webserver
+    become: true
+    ansible.builtin.service:
+      name: httpd
+      state: started
+      enabled: true
+
+

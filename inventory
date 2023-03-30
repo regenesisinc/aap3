@@ -1,1 +1,10 @@
+#
+# Define all the hosts..
+#
 node01 ansible_host=in01.training.edgecloud.com
+
+#
+# Define all the groups and their members
+#
+[web]
+node01
