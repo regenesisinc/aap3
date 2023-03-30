@@ -1,0 +1,8 @@
+---
+- name: Dump hostvars
+  hosts: all
+  gather_facts: true
+  tasks:
+  - debug:
+      var: hostvars
+
