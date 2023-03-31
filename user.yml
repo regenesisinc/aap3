@@ -1,0 +1,15 @@
+---
+- name: Set up a user account
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    ansible_password: somepass
+  
+  tasks:
+  - name: Create the ansible user account with a password
+    ansible.builtin.user:
+      name: ansible
+      password: "{{ ansible_password | default('ansiblepass') | password_hash('sha512', 'somekindofsalt') }}"
+
+
