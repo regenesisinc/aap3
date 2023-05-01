@@ -1,0 +1,6 @@
+
+# Install git ( sudo dnf git) on your workstation
+
+# Generate ssh key 
+
+# Clone app2 repo from Nathan
