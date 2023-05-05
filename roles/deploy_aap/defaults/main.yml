@@ -1,0 +1,6 @@
+---
+# defaults file for deploy_aap
+
+default_sshkey_list:
+  - name: AAP3-Student-Key
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJsgqSq0xVHz0luMtAiV1fwTlgA5cmHn/xEr+XGYtTka student.aap3 Lab No Pass"

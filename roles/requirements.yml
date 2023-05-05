@@ -1,0 +1,6 @@
+---
+collections:
+- ansible.posix
+#  - name: ansible.posix
+#    #version: 1.0.0
+#    type: galaxy

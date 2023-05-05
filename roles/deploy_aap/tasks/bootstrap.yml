@@ -1,0 +1,31 @@
+---
+# tasks file for deploy_aap
+
+- name: announcement
+  debug:
+    msg: "running deploy_aap on {{ ansible_host }}"
+
+- name: deploy_app_debug
+  debug:
+    msg: "user: {{ansible_user}}, password: {{ ansible_password }}"
+
+
+- name: create_user
+  ansible.builtin.user:
+    name: ansible
+    comment: "Ansible deployment user"
+    uid: 7777
+    group: 1000
+    groups: student,wheel
+
+- name: drop_ssh_key
+  ansible.posix.authorized_key:
+    user: ansible
+    state: present
+    key: "{{ item['key'] }}"
+  loop: "{{ default_sshkey_list|flatten(levels=1) }}"
+
+- name: update_sudoers
+  ansible.builtin.copy:
+    dest: /etc/sudoers.d/ansible
+    content: "ansible ALL=(ALL) NOPASSWD: ALL"

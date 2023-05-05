@@ -1,0 +1,17 @@
+---
+- name: Deploy_Controller
+  hosts: newhosts
+  become: true
+  gather_facts: false
+
+  tasks:
+
+  - name: debug
+    debug:
+      msg: "user: {{ansible_user}}, password: {{ ansible_password }}"
+
+  - name: include_bootstrap
+    ansible.builtin.include_role:
+      name: deploy_aap
+      tasks_from: bootstrap
+    #ansible_user: student
